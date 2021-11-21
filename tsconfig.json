@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "module": "ES2020",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "baseUrl": ".",
+        "lib": [
+            "esnext"
+        ],
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        },
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "declaration": true,
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
