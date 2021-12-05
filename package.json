@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "task1": "nodemon src/1.1/index.ts",
+    "task1_rl": "nodemon src/1.1/index_readline.ts",
     "task2": "nodemon src/1.2/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
