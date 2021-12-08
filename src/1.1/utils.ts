@@ -1,0 +1,1 @@
+export const reverseString = (input: string) => input ? input.split('').reverse().join('') + '\n' : '\n';
