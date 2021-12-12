@@ -15,7 +15,6 @@ plugins:
   # Existing plugin (https://www.npmjs.com/package/serverless-single-page-app-plugin) doesn't have invalidate cache feature that often used during CI/CD events.
   # How to build your own plugins: https://www.serverless.com/framework/docs/providers/aws/guide/plugins#service-local-plugin
   - serverless-single-page-app-plugin
-  - serverless-cloudfront-invalidate
 
 custom:
   client:
@@ -25,22 +24,6 @@ custom:
 
   ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
-
-  cloudfrontInvalidate:
-    # - distributionId: "ENY4K8F5PJ9OC" #conditional, distributionId or distributionIdKey is required.
-    #   # distributionIdKey: "CDNDistributionId" #conditional, distributionId or distributionIdKey is required.
-    #   autoInvalidate: false # Can be set to false to avoid automatic invalidation after the deployment. Useful if you want to manually trigger the invalidation later. Defaults to true.
-    #   items: # one or more paths required
-    #     - "/index.html"
-    #   stage: "dev"  # conditional, the stage that this cloudfront invalidation should be created
-    #         # this should match the provider's stage you declared, e.g. "dev" but not "prod" in this case
-    #         # an invalidation for this distribution will be created when executing `sls deploy --stage dev`
-    - # distributionId: "CLOUDFRONT_DIST_ID" #conditional, distributionId or distributionIdKey is required.
-      distributionIdKey: "CDNDistributionId" #conditional, distributionId or distributionIdKey is required.
-      autoInvalidate: true # Can be set to false to avoid automatic invalidation after the deployment. Useful if you want to manually trigger the invalidation later. Defaults to true.
-      items: # one or more paths required
-        - "/index.html"
-      # `stage` is omitted, an invalidation will be created for this distribution at all stages
 
 resources:
   Resources:
@@ -144,7 +127,3 @@ resources:
       Value: !Ref WebAppS3Bucket
     WebAppCloudFrontDistributionOutput:
       Value: !GetAtt WebAppCloudFrontDistribution.DomainName
-    CDNDistributionId:
-      Description: CDN distribution id.
-      Value: 
-        Ref: WebAppCloudFrontDistribution
